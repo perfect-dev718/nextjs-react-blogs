@@ -1,0 +1,80 @@
+fragment OrderStub on OrderStub {
+  id
+  userId
+  isParentOrder
+  parentOrderId
+  companyId
+  company
+  timestamp
+  firstname
+  lastname
+  email
+  phone
+  status
+  total
+  subtotal
+  totalProducts
+}
+
+fragment Order on Order {
+  id
+  userId
+  isParentOrder
+  parentOrderId
+  companyId
+  company
+  timestamp
+  firstname
+  lastname
+  email
+  phone
+  status
+  total
+  subtotal
+  discount
+  subtotalDiscount
+  shippingCost
+  billingFirstname
+  billingLastname
+  billingAddress
+  billingAddress2
+  billingCity
+  billingCounty
+  billingPostcode
+  billingPhone
+  shippingFirstname
+  shippingLastname
+  shippingAddress
+  shippingAddress2
+  shippingCity
+  shippingCounty
+  shippingPostcode
+  shippingPhone
+  shippingType
+  payment {
+    id
+    name
+    description
+  }
+  items {
+    ...OrderItem
+  }
+}
+
+fragment OrderItem on OrderItem {
+  id
+  name
+  type
+  productId
+  amount
+  price
+  product {
+    sku
+    slug
+    image {
+      detail {
+        imagePath
+      }
+    }
+  }
+}

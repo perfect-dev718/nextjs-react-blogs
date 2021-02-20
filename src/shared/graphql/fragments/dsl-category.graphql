@@ -1,0 +1,21 @@
+fragment DslCategoryFields on DslCategory {
+  id
+  parentId
+  name
+  status {
+    id
+    value
+    displayName
+    description
+    createdOn
+    updatedOn
+  }
+  shortDescription
+  longDescription
+  seoTitle
+  seoDescription
+  seoKeywords
+  seoSlug
+  createdOn
+  updatedOn
+}

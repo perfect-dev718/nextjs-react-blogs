@@ -1,0 +1,9 @@
+fragment Wishlist on Wishlist {
+  id
+  userId
+  name
+  canDelete
+  active
+  created
+  items
+}

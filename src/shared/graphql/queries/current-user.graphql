@@ -1,0 +1,17 @@
+#import "../fragments/dsl-cart.graphql"
+#import "../fragments/dsl-user.graphql"
+
+query CurrentUserWithCart {
+  dslCurrentUser {
+    result
+    user {
+      ...DslUserFields
+    }
+    outlet {
+      ...OutletFields
+    }
+  }
+  dslCart {
+    ...DslCartFields
+  }
+}

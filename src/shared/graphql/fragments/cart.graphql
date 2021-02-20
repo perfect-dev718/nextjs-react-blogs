@@ -1,0 +1,66 @@
+fragment Cart on Cart {
+  id
+  total
+  totalProducts
+  items {
+    name
+    id
+    productId
+    amount
+    price
+    product {
+      slug
+      sku
+      productImages {
+        main {
+          imagePath
+          type
+        }
+      }
+    }
+  }
+  user {
+    ...CartUser
+    address {
+      shipping {
+        type
+        firstName
+        lastName
+        address
+        address2
+        city
+        county
+        state
+        country
+        countryCode
+        postcode
+        phone
+      }
+      billing {
+        firstName
+        lastName
+        address
+        address2
+        city
+        county
+        state
+        country
+        countryCode
+        postcode
+        phone
+      }
+    }
+  }
+}
+
+fragment CartUser on CartUserData {
+  id
+  status
+  type
+  email
+  firstName
+  lastName
+  phone
+  companyId
+  company
+}

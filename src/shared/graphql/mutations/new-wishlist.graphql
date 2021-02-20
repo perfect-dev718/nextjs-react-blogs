@@ -1,0 +1,7 @@
+#import "../fragments/wishlist.graphql"
+
+mutation NewWishlist($name: String!) {
+  newWishlist(wishlist: { name: $name }) {
+    ...Wishlist
+  }
+}

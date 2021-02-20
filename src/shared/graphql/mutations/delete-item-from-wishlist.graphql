@@ -1,0 +1,7 @@
+#import "../fragments/wishlist.graphql"
+
+mutation DeleteItemFromWishlist($id: String!, $itemId: Int!) {
+  deleteItemFromWishlist(itemId: $itemId, listId: $id) {
+    ...Wishlist
+  }
+}

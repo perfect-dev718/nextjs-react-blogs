@@ -1,0 +1,24 @@
+#import "./address.graphql"
+
+fragment OutletFields on DslOutlet {
+  id
+  status {
+    id
+    displayName
+    description
+    value
+    createdOn
+    updatedOn
+  }
+  name
+  style
+  legalStatus
+  companyName
+  charityNumber
+  dropPointDescription
+  createdOn
+  updatedOn
+  address {
+    ...AddressFields
+  }
+}

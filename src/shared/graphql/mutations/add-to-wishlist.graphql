@@ -1,0 +1,7 @@
+#import "../fragments/wishlist.graphql"
+
+mutation AddItemToWishlist($id: String!, $productId: Int!) {
+  addItemToWishlist(item: { listId: $id, productId: $productId }) {
+    ...Wishlist
+  }
+}

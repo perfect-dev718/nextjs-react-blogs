@@ -1,0 +1,5 @@
+fragment DslFilterFields on DslFilter {
+  id
+  name
+  options
+}

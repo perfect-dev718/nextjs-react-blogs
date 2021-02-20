@@ -1,0 +1,16 @@
+query GetContentPage($slug: String!) {
+  content(params: { contentType: "content-page", slug: $slug }) {
+    id
+    slug
+    type
+    title
+    body
+    custom {
+      images {
+        url
+        title
+        alt
+      }
+    }
+  }
+}

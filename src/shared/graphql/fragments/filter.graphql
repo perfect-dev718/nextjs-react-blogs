@@ -1,0 +1,23 @@
+fragment Filter on Filter {
+  id
+  name
+  featureId
+  featureType
+  fieldType
+  prefix
+  suffix
+  min
+  max
+  variants {
+    ...Variants
+  }
+  selectedVariants {
+    ...Variants
+  }
+}
+
+fragment Variants on FilterVariant {
+  id
+  value
+  position
+}

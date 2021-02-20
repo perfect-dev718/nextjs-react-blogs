@@ -1,0 +1,7 @@
+#import "../fragments/promotion.graphql"
+
+query PromotionByType($type: String!) {
+  getPromotionsByType(type: $type) {
+    ...Promotion
+  }
+}

@@ -1,0 +1,27 @@
+fragment User on User {
+  id
+  firstName
+  lastName
+  email
+  status
+  phone
+  companyId
+  company
+  billingFirstname
+  billingLastname
+  billingAddress
+  billingAddress2
+  billingCity
+  billingCounty
+  billingPostcode
+  billingPhone
+  shippingFirstname
+  shippingLastname
+  shippingAddress
+  shippingAddress2
+  shippingCity
+  shippingCounty
+  shippingPostcode
+  shippingPhone
+  shippingType
+}

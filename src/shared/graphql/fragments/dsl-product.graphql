@@ -1,0 +1,74 @@
+fragment DslProductFields on DslProduct {
+  id
+  status {
+    id
+    displayName
+    description
+    value
+    createdOn
+    updatedOn
+  }
+  type
+  name
+  shortDescription
+  longDescription
+  code
+  mrrp
+  popularity
+  searchWords
+  seoTitle
+  seoDescription
+  seoKeywords
+  seoSlug
+  weight
+  boxLength
+  boxWidth
+  boxHeight
+  featured
+  createdOn
+  updatedOn
+  features {
+    id
+    name
+    description
+    value
+    featured
+    filterable
+    position
+    createdOn
+    updatedOn
+  }
+  options {
+    id
+    productId
+    name
+    description
+    icon
+    createdOn
+    updatedOn
+  }
+  price {
+    subtotal
+    vat
+    total
+  }
+  promotions {
+    id
+    name
+    slug
+    type {
+      name
+      displayName
+      description
+    }
+  }
+  mainImage {
+    fullSizePath
+    thumbnailPath
+  }
+  additionalImages {
+    fullSizePath
+    thumbnailPath
+  }
+  onWishlist
+}

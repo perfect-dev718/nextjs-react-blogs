@@ -1,0 +1,100 @@
+# This is a sample build configuration for Go.
+# Check our guides at https://confluence.atlassian.com/x/5Q4SMw for more examples.
+# Only use spaces to indent your .yml configuration.
+# -----
+# You can specify a custom docker image from Docker Hub as your build environment.
+image: node:14.4.0
+
+definitions:
+  caches:
+    nextcache: .next/cache
+  steps:
+    - step: &dependencies
+        name: Install Dependencies
+        caches:
+          - node
+        script:
+          - npm install --prod=false
+
+    - step: &prettier
+        name: Formatting
+        caches:
+          - node
+        script:
+          - npm run prettier
+
+    - step: &will-build
+        name: Will Build
+        caches:
+          - node
+          - nextcache
+        script:
+          - echo "Building from ${API_ENDPOINT}"
+          - echo API_ENDPOINT=${API_ENDPOINT} >> .env
+          - echo API_KEY=${API_KEY} >> .env
+          - npm run build
+        artifacts:
+          - .next/**
+
+pipelines:
+  default:
+    - step: *dependencies
+    - step: *prettier
+    - step: *will-build
+
+  branches:
+    master:
+      - step: *dependencies
+      - step: *prettier
+      - step: *will-build
+      - step:
+          name: Build for Env and Zip Code
+          image: atlassian/default-image:2
+          caches:
+            - node
+          script:
+            - echo API_ENDPOINT=${API_ENDPOINT} >> .env
+            - echo API_KEY=${API_KEY} >> .env
+            # - apt-get update && apt-get install -y zip
+            - zip -r at-storefront.zip . -x .git/\* node_modules/\* src/\*
+          artifacts:
+            - at-storefront.zip
+      - step:
+          name: Deploy to AWS EB
+          deployment: Dev
+          script:
+            - pipe: atlassian/aws-elasticbeanstalk-deploy:0.6.6
+              variables:
+                AWS_ACCESS_KEY_ID: '$aws_dsl_iam_access_key' # Optional if already defined in the context.
+                AWS_SECRET_ACCESS_KEY: '$aws_dsl_iam_secret' # Optional if already defined in the context.
+                AWS_DEFAULT_REGION: 'eu-west-1' # Optional if already defined in the context.
+                APPLICATION_NAME: 'at-storefront-dev'
+                ENVIRONMENT_NAME: 'at-storefront-dev'
+                ZIP_FILE: 'at-storefront.zip'
+                S3_BUCKET: 'elasticbeanstalk-eu-west-1-604128201135'
+    staging-*:
+      - step: *dependencies
+      - step: *prettier
+      - step:
+          name: Deploy to AWS EB - Staging
+          caches:
+            - node
+            - nextcache
+          deployment: Staging
+          script:
+            - echo "Building from ${API_ENDPOINT}"
+            - echo API_ENDPOINT=${API_ENDPOINT} >> .env
+            - echo API_KEY=${API_KEY} >> .env
+            # - echo PAYMENT_AUTH=${PAYMENT_AUTH} >> .env
+            - npm run build
+            - apt-get update && apt-get install -y zip
+            - zip -r at-storefront-staging.zip . -x node_modules/\* src/\*
+            - pipe: atlassian/aws-elasticbeanstalk-deploy:0.6.6
+              variables:
+                AWS_ACCESS_KEY_ID: '$aws_dsl_iam_access_key' # Optional if already defined in the context.
+                AWS_SECRET_ACCESS_KEY: '$aws_dsl_iam_secret' # Optional if already defined in the context.
+                AWS_DEFAULT_REGION: 'eu-west-1' # Optional if already defined in the context.
+                APPLICATION_NAME: 'at-storefront-dev'
+                ENVIRONMENT_NAME: 'at-storefront-staging'
+                ZIP_FILE: 'at-storefront-staging.zip'
+                S3_BUCKET: 'elasticbeanstalk-eu-west-1-604128201135'

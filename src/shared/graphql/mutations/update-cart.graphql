@@ -1,0 +1,7 @@
+#import "../fragments/dsl-cart.graphql"
+
+mutation UpdateCart($products: [DslCartProductInput!]!) {
+  dslUpdateCart(products: $products) {
+    ...DslCartFields
+  }
+}

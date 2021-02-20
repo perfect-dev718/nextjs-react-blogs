@@ -1,0 +1,10 @@
+#import "../fragments/dsl-user.graphql"
+
+mutation UpdateUser($input: UserUpdateInput!) {
+  dslUpdateUser(input: $input) {
+    user {
+      ...DslUserFields
+    }
+    notification
+  }
+}

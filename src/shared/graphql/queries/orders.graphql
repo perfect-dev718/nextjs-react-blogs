@@ -1,0 +1,13 @@
+#import "../fragments/orders.graphql"
+#import "../fragments/params.graphql"
+
+query Orders($filters: String!, $pagination: Pagination!, $sortBy: String!) {
+  orders(pagination: $pagination, params: { filters: $filters, sortBy: $sortBy }) {
+    orders {
+      ...OrderStub
+    }
+    params {
+      ...Params
+    }
+  }
+}

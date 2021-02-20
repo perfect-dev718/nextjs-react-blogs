@@ -1,0 +1,32 @@
+#import "../fragments/filter.graphql"
+#import "../fragments/params.graphql"
+#import "../fragments/product.graphql"
+
+query SearchProductsFull(
+  $filters: String!
+  $sortBy: String!
+  $sortOrder: String!
+  $search: String!
+  $pagination: Pagination!
+) {
+  products(
+    params: {
+      filters: $filters
+      sortBy: $sortBy
+      sortOrder: $sortOrder
+      searchQuery: $search
+      imageSizes: ["category"]
+    }
+    pagination: $pagination
+  ) {
+    products {
+      ...Product
+    }
+    params {
+      ...Params
+    }
+  }
+  productSearchFilters(params: { searchQuery: $search }) {
+    ...Filter
+  }
+}

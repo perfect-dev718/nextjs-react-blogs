@@ -1,0 +1,112 @@
+#import "./image.graphql"
+#import "./product-images.graphql"
+
+fragment Product on Product {
+  id
+  sku
+  featured
+  status
+  name
+  description
+  slug
+  type
+  productType
+  popularity
+  price
+  basePrice
+  listPrice
+  favouritesId
+  companyId
+  parentId
+  taxIds
+  categoryIds
+  userGroupIds
+  mainCategory
+  tastingNotes
+  productImages {
+    ...ProductImagesResponse
+  }
+  features {
+    ...ProductFeature
+  }
+  position
+  weight
+  height
+  freeShipping
+  ageVerification
+  options {
+    ...ProductOption
+  }
+  pumpClipAvailable
+  installationEmail
+  crossSell {
+    id
+    name
+    slug
+    price
+    sku
+    productImages {
+      ...ProductImagesResponse
+    }
+  }
+  promotions {
+    id
+    name
+    slug
+    type {
+      name
+      displayName
+      description
+    }
+  }
+  restrictedLocations {
+    destination
+    destinationId
+  }
+}
+
+fragment ProductFeature on ProductFeature {
+  id
+  variantId
+  type
+  description
+  prefix
+  suffix
+  value
+  parentId
+  variants {
+    ...ProductFeatureVariant
+  }
+  displayOnHeader
+  displayOnCatalog
+  displayOnProduct
+}
+
+fragment ProductFeatureVariant on ProductFeatureVariant {
+  id
+  value
+  variant
+}
+
+fragment ProductOption on ProductOption {
+  id
+  type
+  name
+  description
+  required
+  position
+  text
+  variants {
+    ...ProductOptionVariant
+  }
+}
+
+fragment ProductOptionVariant on ProductOptionVariant {
+  id
+  position
+  value
+  image {
+    ...Image
+  }
+  selected
+}

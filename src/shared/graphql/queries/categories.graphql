@@ -1,0 +1,13 @@
+#import "../fragments/dsl-category.graphql"
+
+query GetCategories {
+  dslCategories {
+    ...DslCategoryFields
+    subCategories {
+      ...DslCategoryFields
+      subCategories {
+        ...DslCategoryFields
+      }
+    }
+  }
+}

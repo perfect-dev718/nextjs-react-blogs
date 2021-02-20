@@ -1,0 +1,14 @@
+#import "./address.graphql"
+
+fragment DslUserFields on DslUser {
+  id
+  title
+  firstName
+  lastName
+  phone
+  email
+  marketing
+  billingAddresses {
+    ...AddressFields
+  }
+}

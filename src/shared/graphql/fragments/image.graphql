@@ -1,0 +1,17 @@
+fragment Image on Image {
+  pairId
+  imageId
+  position
+  detail {
+    imagePath
+    altText
+    sizeX
+    sizeY
+  }
+  icon {
+    imagePath
+    altText
+    sizeX
+    sizeY
+  }
+}

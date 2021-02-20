@@ -1,0 +1,23 @@
+header,
+footer {
+  display: none !important;
+}
+
+.wishlist-item {
+  display: flex !important;
+}
+
+.wishlist-item .price {
+  margin-left: auto !important;
+}
+
+.wishlist-item .img-container {
+  width: 134px !important;
+  height: 134px !important;
+}
+
+.wishlists button,
+.wishlist-item .qty,
+.wishlist-item .controls {
+  display: none !important;
+}

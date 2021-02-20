@@ -1,0 +1,7 @@
+#import "../fragments/cart.graphql"
+
+mutation EmptyCart($items: [CartInputUpdateItem]!) {
+  updateCart(items: $items) {
+    ...Cart
+  }
+}

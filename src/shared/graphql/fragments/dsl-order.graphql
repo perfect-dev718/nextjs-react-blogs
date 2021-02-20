@@ -1,0 +1,58 @@
+#import "./dsl-product.graphql"
+
+fragment DslOrderFields on DslOrder {
+  id
+  status {
+    id
+    displayName
+    description
+    createdOn
+    updatedOn
+  }
+  userId
+  subtotal
+  discount
+  total
+  notes
+  firstname
+  lastname
+  company
+  billingLine1
+  billingLine2
+  billingLine3
+  billingCity
+  billingCounty
+  billingPostcode
+  billingCountry
+  shippingLine1
+  shippingLine2
+  shippingLine3
+  shippingCity
+  shippingCounty
+  shippingPostcode
+  shippingCountry
+  paymentId
+  createdOn
+  updatedOn
+  orderItems {
+    id
+    orderId
+    productId
+    vendorId
+    name
+    type
+    code
+    weight
+    boxLength
+    boxWidth
+    boxHeight
+    price
+    qty
+    total
+    createdOn
+    updatedOn
+    product {
+      ...DslProductFields
+    }
+  }
+}

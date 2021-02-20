@@ -1,0 +1,20 @@
+fragment Promotion on Promotion {
+  id
+  type {
+    name
+    displayName
+    description
+  }
+  name
+  slug
+  shortDescription
+  longDescription
+  imagePath
+  priority
+  status
+  identityCode
+  terms
+  activeFrom
+  activeTo
+  productsInPromotion
+}

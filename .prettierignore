@@ -1,0 +1,4 @@
+.next
+src/generated/*
+src/shared/generated/*
+graphql.schema.json

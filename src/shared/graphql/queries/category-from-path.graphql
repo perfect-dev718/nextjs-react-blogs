@@ -1,0 +1,7 @@
+#import "../fragments/dsl-category.graphql"
+
+query CategoryFromPath($path: String!) {
+  dslCategoryByPath(path: $path) {
+    ...DslCategoryFields
+  }
+}

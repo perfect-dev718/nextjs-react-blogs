@@ -1,0 +1,44 @@
+/* custom swiper stlye */
+
+.swiper-container {
+  z-index: 0;
+}
+
+.big-dot .swiper-pagination-bullet {
+  width: 17px;
+  height: 17px;
+  border: 2px solid #fff;
+  background: transparent;
+  opacity: 1;
+  transition: all 0.3;
+}
+
+.big-dot .swiper-pagination-bullet-active {
+  background-color: #fff;
+}
+
+.big-dot .swiper-button-prev,
+.big-dot .swiper-button-next {
+  color: #131b25;
+  top: 44%;
+  width: 13px;
+  height: 23px;
+}
+
+.big-dot .swiper-button-prev:after,
+.big-dot .swiper-button-next:after {
+  font-size: 27px;
+}
+
+.standard-dot .swiper-pagination-bullet {
+  width: 10px;
+  height: 10px;
+  border: 1px solid #131b25;
+  background: transparent;
+  opacity: 1;
+  transition: all 0.3;
+}
+
+.standard-dot .swiper-pagination-bullet-active {
+  background-color: #131b25;
+}

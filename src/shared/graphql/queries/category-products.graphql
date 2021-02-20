@@ -1,0 +1,14 @@
+#import "../fragments/dsl-filter.graphql"
+#import "../fragments/dsl-product.graphql"
+
+query CategoryProducts($id: ID!, $sort: Sort, $pagination: Pagination, $filters: [ProductFilter!]) {
+  dslCategoryProducts(id: $id, sort: $sort, pagination: $pagination, filters: $filters) {
+    totalCount
+    products {
+      ...DslProductFields
+    }
+    filters {
+      ...DslFilterFields
+    }
+  }
+}

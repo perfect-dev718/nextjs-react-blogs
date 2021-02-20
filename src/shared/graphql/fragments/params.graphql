@@ -1,0 +1,6 @@
+fragment Params on ProductParams {
+  page
+  itemsPerPage
+  totalItems
+  totalPages
+}

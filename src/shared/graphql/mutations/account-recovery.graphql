@@ -1,0 +1,15 @@
+#import "../fragments/cart.graphql"
+#import "../fragments/user.graphql"
+
+mutation AccountRecovery($key: String!, $password: String!, $confirmPassword: String!) {
+  loginWithRecoveryKey(key: $key, password1: $password, password2: $confirmPassword) {
+    result
+    user {
+      ...User
+    }
+    cart {
+      ...Cart
+    }
+    notification
+  }
+}

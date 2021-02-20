@@ -1,0 +1,48 @@
+#import "./image.graphql"
+#import "./filter.graphql"
+#import "./params.graphql"
+#import "./product.graphql"
+
+fragment Category on Category {
+  id
+  parentId
+  path
+  name
+  slug
+  position
+  status
+  productCount
+  level
+  companyId
+  userGroupIds
+  timestamp
+  isOp
+  localization
+  ageVerification
+  ageLimit
+  parentAgeVerification
+  parentAgeLimit
+  isTrash
+  langCode
+  description
+  metaKeywords
+  metaDescription
+  pageTitle
+  ageWarningMessage
+  seoName
+  seoPath
+  image {
+    ...Image
+  }
+  productsAndFilters(pagination: $pagination, params: { filters: $filters }) {
+    products {
+      ...Product
+    }
+    filters {
+      ...Filter
+    }
+    params {
+      ...Params
+    }
+  }
+}

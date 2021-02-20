@@ -1,0 +1,16 @@
+fragment ProductImagesResponse on ProductImagesResponse {
+  main {
+    ...ProductImage
+  }
+  additional {
+    ...ProductImage
+  }
+}
+
+fragment ProductImage on ProductImage {
+  type
+  imagePath
+  alt
+  width
+  height
+}

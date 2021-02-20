@@ -1,0 +1,7 @@
+query GetPromotionTypes {
+  promotionTypes {
+    name
+    displayName
+    description
+  }
+}

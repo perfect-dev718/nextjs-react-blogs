@@ -1,0 +1,18 @@
+#import "../fragments/dsl-cart.graphql"
+#import "../fragments/dsl-user.graphql"
+#import "../fragments/outlet.graphql"
+
+mutation Login($email: String!, $password: String!) {
+  dslLogin(authRequest: { username: $email, password: $password }) {
+    result
+    user {
+      ...DslUserFields
+    }
+    dslCart {
+      ...DslCartFields
+    }
+    outlet {
+      ...OutletFields
+    }
+  }
+}

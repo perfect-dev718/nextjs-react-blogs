@@ -1,0 +1,7 @@
+#import "../fragments/promotion.graphql"
+
+query GetPromotions {
+  promotions {
+    ...Promotion
+  }
+}

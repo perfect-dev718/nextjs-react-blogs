@@ -1,0 +1,24 @@
+#import "../fragments/dsl-filter.graphql"
+#import "../fragments/dsl-product.graphql"
+
+query SearchProducts(
+  $searchQuery: String!
+  $sort: Sort
+  $pagination: Pagination
+  $filters: [ProductFilter!]
+) {
+  dslProductSearch(
+    searchQuery: $searchQuery
+    sort: $sort
+    pagination: $pagination
+    filters: $filters
+  ) {
+    totalCount
+    products {
+      ...DslProductFields
+    }
+    filters {
+      ...DslFilterFields
+    }
+  }
+}

@@ -1,0 +1,7 @@
+#import "../fragments/orders.graphql"
+
+query OrderDetail($id: ID!) {
+  order(id: $id) {
+    ...Order
+  }
+}
